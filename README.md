@@ -32,3 +32,11 @@ CDKToolkit: creating CloudFormation changeset...
 * `yarn getenv` to get environment variables from deployed stacks output
 * `yarn dev path/to/entry.ts` to run file with environment variables set
 * `yarn dev:api` to run express app locally
+
+## TODOS
+
+- [ ] Proper webpack setup for frontend dev
+- [ ] An external configuration for react app
+- [ ] Live reload for react app
+- [ ] Automatic handler path resolution for Lambda functions
+- [ ] Dynamic webpack configuration for Lambda functions
