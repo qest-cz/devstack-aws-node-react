@@ -37,6 +37,7 @@ module.exports = {
         'import/order': 'error',
         '@typescript-eslint/no-unused-vars': 'off',
         'unused-imports/no-unused-vars-ts': 'off',
+        '@typescript-eslint/ban-types': 'off',
         'unused-imports/no-unused-imports-ts': 'error',
     },
 }

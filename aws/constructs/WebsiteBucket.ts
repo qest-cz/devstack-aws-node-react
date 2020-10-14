@@ -7,7 +7,11 @@ export interface WebsiteBucketProps extends BucketProps {
 }
 
 export class WebsiteBucket extends Bucket {
-    constructor(scope: Construct, id: string, { allowedHeaders, allowedOrigins, ...props }: WebsiteBucketProps) {
+    constructor(
+        scope: Construct,
+        id: string,
+        { allowedHeaders, allowedOrigins, ...props }: WebsiteBucketProps,
+    ) {
         super(scope, id, {
             websiteIndexDocument: 'index.html',
             websiteErrorDocument: 'index.html',

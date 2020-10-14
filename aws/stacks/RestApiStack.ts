@@ -12,7 +12,11 @@ export class RestApiStack extends Stack {
     public readonly restApi: LambdaRestApi
     public readonly todosTable: Table
 
-    public constructor(scope: Construct, id: string, { apiHandlerProps, ...props }: RestApiStackProps) {
+    public constructor(
+        scope: Construct,
+        id: string,
+        { apiHandlerProps, ...props }: RestApiStackProps,
+    ) {
         super(scope, id, props)
 
         const handler = new Function(this, 'ApiHandler', apiHandlerProps)
