@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { TodoItem } from '../model'
+import { TodoItem } from '../types'
 import Config from '../../../../config'
 import { docClient } from '../../../../container'
 

@@ -1,16 +1,19 @@
-import { App, CfnOutput, Duration, Stack } from '@aws-cdk/core'
+import { App, CfnOutput, Duration } from '@aws-cdk/core'
 import { Source } from '@aws-cdk/aws-s3-deployment'
 import { Code, Runtime } from '@aws-cdk/aws-lambda'
-import { FrontEndStack } from '../src/frontend/aws/FrontEndStack'
-import { RestApiStack } from '../src/backend/Todos/RestApi/aws/RestApiStack'
+import { FrontEndStack } from '../aws/stacks/FrontEndStack'
+import { RestApiStack } from '../aws/stacks/RestApiStack'
+import { AppStacks } from '../aws/constants'
+
+const stackPrefix = 'Demo'
 
 const app = new App()
 
-const frontendStack = new FrontEndStack(app, 'DemoFrontEnd', {
+const frontendStack = new FrontEndStack(app, `${stackPrefix}${AppStacks.FrontEnd}`, {
     sourceAsset: Source.asset('./dist-web'),
 })
 
-const todosApiStack = new RestApiStack(app, 'DemoRestApi', {
+const todosApiStack = new RestApiStack(app, `${stackPrefix}${AppStacks.BackEnd}`, {
     apiHandlerProps: {
         runtime: Runtime.NODEJS_12_X,
         code: Code.fromAsset('./dist/api-handler'),
@@ -20,8 +23,6 @@ const todosApiStack = new RestApiStack(app, 'DemoRestApi', {
     },
 })
 
-const outputs = new Stack(app, 'DemoOutputs', {})
-
-new CfnOutput(outputs, 'WebsiteUrl', { value: frontendStack.websiteBucket.bucketWebsiteUrl })
-new CfnOutput(outputs, 'TodoApiUrl', { value: todosApiStack.restApi.url })
-new CfnOutput(outputs, 'TodosTableName', { value: todosApiStack.todosTable.tableName })
+new CfnOutput(frontendStack, 'WebsiteUrl', { value: frontendStack.websiteBucket.bucketWebsiteUrl })
+new CfnOutput(todosApiStack, 'TodoApiUrl', { value: todosApiStack.restApi.url })
+new CfnOutput(todosApiStack, 'TodosTableName', { value: todosApiStack.todosTable.tableName })

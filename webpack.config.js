@@ -45,9 +45,8 @@ module.exports = [
                 'src',
                 'backend',
                 'Todos',
-                'RestApi',
-                'aws',
-                'api-handler.ts',
+                'handlers',
+                'api-gateway.ts',
             ),
         },
         output: {

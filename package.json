@@ -4,10 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "getenv": "ts-node -T scripts/get-env-vars.ts DemoOutputs",
-    "dev": "cross-env $(cat ./env/.env.dev) ts-node -T",
+    "getenv": "ts-node -T scripts/get-env-vars.ts",
+    "dev": "cross-env $(cat ./env/.env) ts-node -T",
     "dev:api": "nodemon --watch src -e ts  --exec 'yarn dev bin/start-todos-api.ts'",
-    "deploy": "cdk --app 'ts-node -T bin/deploy.ts' deploy '*' --require-approval never",
+    "deploy": "sh scripts/deploy.sh",
+    "cdk:deploy": "cdk --app 'ts-node -T bin/deploy.ts' deploy '*' --require-approval never",
+    "cdk:app": "cdk --app 'ts-node -T bin/deploy.ts'",
     "build": "rimraf dist/ && rimraf dist-web && webpack --mode production",
     "test": "jest",
     "code:fix": "eslint --fix '*/**/*.{ts,tsx}'"
