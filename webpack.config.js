@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -38,7 +40,15 @@ module.exports = [
         ...common,
         target: 'node',
         entry: {
-            apiHandler: path.join(__dirname, 'src', 'backend', 'Todos', 'RestApi', 'aws', 'api-handler.ts'),
+            apiHandler: path.join(
+                __dirname,
+                'src',
+                'backend',
+                'Todos',
+                'RestApi',
+                'aws',
+                'api-handler.ts',
+            ),
         },
         output: {
             filename: 'index.js',
