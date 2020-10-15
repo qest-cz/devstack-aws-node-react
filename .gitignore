@@ -18,6 +18,7 @@ dist-web
 .vscode
 cdk.context.json
 .env.dev
+.env
 !amp.d.ts
 package.zip
 /.cdk.staging/

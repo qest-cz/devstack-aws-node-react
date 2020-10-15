@@ -1,4 +1,4 @@
-import { Construct, Stack, StackProps } from '@aws-cdk/core'
+import { CfnOutput, Construct, Stack, StackProps } from '@aws-cdk/core'
 import { LambdaRestApi } from '@aws-cdk/aws-apigateway'
 import { Function, FunctionProps } from '@aws-cdk/aws-lambda'
 import { AttributeType, BillingMode, Table } from '@aws-cdk/aws-dynamodb'
@@ -32,5 +32,8 @@ export class RestApiStack extends Stack {
         this.restApi = todosApi
         this.restApiHandler = handler
         this.todosTable = todosTable
+
+        new CfnOutput(this, 'TodosApiUrl', { value: todosApi.url })
+        new CfnOutput(this, 'TodosTableName', { value: todosTable.tableName })
     }
 }

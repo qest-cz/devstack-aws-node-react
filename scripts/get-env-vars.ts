@@ -29,8 +29,9 @@ const getEnvironment = async (stackName: string): Promise<string> =>
             console.log(
                 `${stackName} stack not found. Make sure its deployed and AWS credentials are set: ${err.message}`,
             )
+
+            return ''
         })
-        .then(() => '')
 
 const createDevEnvFile = async () => {
     writeEnvs('AWS_NODEJS_CONNECTION_REUSE_ENABLED=1\n')
