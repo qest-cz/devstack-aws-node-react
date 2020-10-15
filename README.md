@@ -42,6 +42,10 @@ Use corresponding command to interact with the correct CDK app.
 
 - [ ] Proper webpack setup for frontend dev
 - [x] An external configuration for react app
+- [ ] module-specific configs/containers
+- [ ] Complete module isolation (monorepo setup)
+- [ ] AppSync GraphQl api example
+- [ ] AWS tooling (local invoke etc.)
 - [ ] Live reload for react app
 - [ ] Automatic handler path resolution for Lambda functions
 - [ ] Dynamic webpack configuration for Lambda functions
