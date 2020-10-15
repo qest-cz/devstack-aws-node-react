@@ -28,7 +28,9 @@ CDKToolkit: creating CloudFormation changeset...
 * `yarn build`
    * react app to `dist-web/`
    * lambda handlers to `dist/handler-name/index.js`
-* `yarn deploy` to deploy both web and backend resources
+* `yarn cdk:deploy` to deploy both web and backend resources
+* `yarn cdk:app` access to `cdk` command with `--app` parameter preset
+* `yarn deploy` to build & deploy both web and backend resources
 * `yarn getenv` to get environment variables from deployed stacks output
 * `yarn dev path/to/entry.ts` to run file with environment variables set
 * `yarn dev:api` to run express app locally
@@ -36,7 +38,7 @@ CDKToolkit: creating CloudFormation changeset...
 ## TODOS
 
 - [ ] Proper webpack setup for frontend dev
-- [ ] An external configuration for react app
+- [x] An external configuration for react app
 - [ ] Live reload for react app
 - [ ] Automatic handler path resolution for Lambda functions
 - [ ] Dynamic webpack configuration for Lambda functions
