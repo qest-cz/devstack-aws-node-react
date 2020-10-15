@@ -24,16 +24,19 @@ CDKToolkit: creating CloudFormation changeset...
 
 ## Commands
 
+This repo contains examples running in AWS Lambda and in an ECS cluster. 
+Use corresponding command to interact with the correct CDK app.
+
 * `yarn code:fix` to fix/detect linting issues
-* `yarn build`
+* `yarn build` or `yarn build:ecs`
    * react app to `dist-web/`
    * lambda handlers to `dist/handler-name/index.js`
-* `yarn cdk:deploy` to deploy both web and backend resources
-* `yarn cdk:app` access to `cdk` command with `--app` parameter preset
-* `yarn deploy` to build & deploy both web and backend resources
+   * `tsc` output `dist-ecs/`
+* `yarn deploy` or `yarn deploy-ecs` to build & deploy both web and backend resources
+* `yarn cdk:app` or `yarn cdk:app-ecs` access to `cdk` command with `--app` parameter preset
 * `yarn getenv` to get environment variables from deployed stacks output
 * `yarn dev path/to/entry.ts` to run file with environment variables set
-* `yarn dev:api` to run express app locally
+* `yarn dev:server` to run express app locally
 
 ## TODOS
 

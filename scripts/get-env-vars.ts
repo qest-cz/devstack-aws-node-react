@@ -38,8 +38,9 @@ const createDevEnvFile = async () => {
     appendEnvs('AWS_SDK_LOAD_CONFIG=1\n')
 
     try {
-        appendEnvs(await getEnvironment(AppStacks.FrontEnd))
-        appendEnvs(await getEnvironment(AppStacks.BackEnd))
+        for (const stackName of Object.values(AppStacks)) {
+            appendEnvs(await getEnvironment(stackName))
+        }
     } catch (err) {
         console.log(err)
     }

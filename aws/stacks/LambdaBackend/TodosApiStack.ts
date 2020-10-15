@@ -1,13 +1,14 @@
-import { CfnOutput, Construct, Stack, StackProps } from '@aws-cdk/core'
+import { CfnOutput, Construct, RemovalPolicy, Stack, StackProps } from '@aws-cdk/core'
 import { LambdaRestApi } from '@aws-cdk/aws-apigateway'
 import { Function, FunctionProps } from '@aws-cdk/aws-lambda'
 import { AttributeType, BillingMode, Table } from '@aws-cdk/aws-dynamodb'
+import { WebsiteBucket } from '../../constructs/WebsiteBucket'
 
-export interface RestApiStackProps extends StackProps {
+export interface TodosApiStackProps extends StackProps {
     apiHandlerProps: FunctionProps
 }
 
-export class RestApiStack extends Stack {
+export class TodosApiStack extends Stack {
     public readonly restApiHandler: Function
     public readonly restApi: LambdaRestApi
     public readonly todosTable: Table
@@ -15,7 +16,7 @@ export class RestApiStack extends Stack {
     public constructor(
         scope: Construct,
         id: string,
-        { apiHandlerProps, ...props }: RestApiStackProps,
+        { apiHandlerProps, ...props }: TodosApiStackProps,
     ) {
         super(scope, id, props)
 
@@ -24,10 +25,15 @@ export class RestApiStack extends Stack {
         const todosTable = new Table(this, 'TodosTable', {
             partitionKey: { type: AttributeType.STRING, name: 'id' },
             billingMode: BillingMode.PAY_PER_REQUEST,
+            removalPolicy: RemovalPolicy.DESTROY,
+        })
+        const imagesBucket = new WebsiteBucket(this, 'Images', {
+            removalPolicy: RemovalPolicy.DESTROY,
         })
 
         todosTable.grantReadWriteData(handler)
         handler.addEnvironment('TODOS_TABLE_NAME', todosTable.tableName)
+        handler.addEnvironment('IMAGES_BUCKET_NAME', imagesBucket.bucketName)
 
         this.restApi = todosApi
         this.restApiHandler = handler
@@ -35,5 +41,6 @@ export class RestApiStack extends Stack {
 
         new CfnOutput(this, 'TodosApiUrl', { value: todosApi.url })
         new CfnOutput(this, 'TodosTableName', { value: todosTable.tableName })
+        new CfnOutput(this, 'ImagesBucketName', { value: imagesBucket.bucketName })
     }
 }
