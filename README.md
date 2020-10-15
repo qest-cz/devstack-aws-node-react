@@ -37,16 +37,3 @@ Use corresponding command to interact with the correct CDK app.
 * `yarn getenv` to get environment variables from deployed stacks output
 * `yarn dev path/to/entry.ts` to run file with environment variables set
 * `yarn dev:server` to run express app locally
-
-## TODOS
-
-- [ ] Proper webpack setup for frontend dev
-- [x] An external configuration for react app
-- [ ] module-specific configs/containers
-- [ ] Complete module isolation (monorepo setup)
-- [ ] AppSync GraphQl api example
-- [ ] AWS tooling (local invoke etc.)
-- [ ] Live reload for react app
-- [ ] Automatic handler path resolution for Lambda functions
-- [ ] Dynamic webpack configuration for Lambda functions
-- [ ] docs/comments
