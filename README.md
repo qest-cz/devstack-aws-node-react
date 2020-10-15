@@ -49,3 +49,4 @@ Use corresponding command to interact with the correct CDK app.
 - [ ] Live reload for react app
 - [ ] Automatic handler path resolution for Lambda functions
 - [ ] Dynamic webpack configuration for Lambda functions
+- [ ] docs/comments
