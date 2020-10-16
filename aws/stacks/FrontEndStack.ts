@@ -38,6 +38,7 @@ export class FrontEndStack extends Stack {
             objectKey: 'config.js',
             public: true,
             contentType: 'application/javascript',
+            cacheControl: 'no-cache, must-revalidate',
         })
 
         this.websiteBucket = websiteBucket

@@ -25,6 +25,7 @@ const putObject = async (event) => {
 
     const publicRead = event.ResourceProperties['PublicRead'] || false
     const contentType = event.ResourceProperties['ContentType'] || undefined
+    const cacheControl = event.ResourceProperties['CacheControl'] || undefined
 
     console.log(`writing s3://${bucketName}/${objectKey}`)
 
@@ -35,6 +36,7 @@ const putObject = async (event) => {
             Body: contents,
             ACL: publicRead ? 'public-read' : undefined,
             ...(contentType && { ContentType: contentType }),
+            ...(cacheControl && { CacheControl: cacheControl }),
         })
         .promise()
 

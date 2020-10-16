@@ -31,6 +31,11 @@ interface S3FileProps {
     readonly contentType?: string
 
     /**
+     * Cache control header for the object.
+     */
+    readonly cacheControl?: string
+
+    /**
      * Indicates if this file should have public-read permissions.
      *
      * @default false
@@ -39,6 +44,7 @@ interface S3FileProps {
 }
 
 export class S3File extends CoreConstruct {
+    public readonly cacheControl: string
     public readonly objectKey: string
     public readonly contentType: string
     public readonly url: string
@@ -56,6 +62,7 @@ export class S3File extends CoreConstruct {
                 ['ObjectKey']: props.objectKey,
                 ['PublicRead']: props.public,
                 ['ContentType']: props.contentType,
+                ['CacheControl']: props.cacheControl,
             },
         })
 
@@ -63,6 +70,7 @@ export class S3File extends CoreConstruct {
         this.url = resource.getAttString('URL')
         this.etag = resource.getAttString('ETag')
         this.contentType = props.contentType || ''
+        this.cacheControl = props.cacheControl || ''
     }
 }
 
