@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
-import Config from '../../../config'
-import { docClient } from '../../../container'
+import Config from '../../config'
+import { docClient } from '../container'
 import { TodoItem } from './types'
 
 export const addTodoHandler = async (req: Request, res: Response<TodoItem>, next: NextFunction) => {

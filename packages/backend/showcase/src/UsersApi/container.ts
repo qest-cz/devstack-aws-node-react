@@ -2,7 +2,7 @@ import Knex from 'knex'
 import Config from './config'
 
 const { host, password, user, port, database } = Config.mysql
-let timeoutHandle: any
+let timeoutHandle: NodeJS.Timeout
 let knex: Knex | null
 
 const destroyKnex = () => {

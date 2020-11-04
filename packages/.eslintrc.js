@@ -3,17 +3,8 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
-        ecmaFeatures: {
-            jsx: 2,
-        },
-    },
-    settings: {
-        react: {
-            version: 'detect',
-        },
     },
     extends: [
-        'plugin:react/recommended',
         'plugin:@typescript-eslint/recommended',
         'prettier/@typescript-eslint',
         'plugin:prettier/recommended',
@@ -36,8 +27,9 @@ module.exports = {
         'import/no-cycle': 'error',
         'import/order': 'error',
         '@typescript-eslint/no-unused-vars': 'off',
-        'unused-imports/no-unused-vars-ts': 'off',
         '@typescript-eslint/ban-types': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        'unused-imports/no-unused-vars-ts': 'off',
         'unused-imports/no-unused-imports-ts': 'error',
     },
 }

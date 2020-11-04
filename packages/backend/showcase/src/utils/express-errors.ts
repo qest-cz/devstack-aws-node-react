@@ -1,6 +1,11 @@
 import { NextFunction, Request, Response } from 'express'
 
-export const errorHandler = async (err: any, req: Request, res: Response, next: NextFunction) => {
+export const errorHandler = async (
+    err: unknown,
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) => {
     if (err instanceof Error) {
         console.log(err)
 
@@ -14,11 +19,11 @@ export const errorHandler = async (err: any, req: Request, res: Response, next: 
     })
 }
 
-process.on('unhandledRejection', (error: any) => {
+process.on('unhandledRejection', (error: unknown) => {
     console.log(`Unhandled rejection: `, error)
     if (error instanceof Error) {
         throw error
     } else {
-        throw new Error(error as any)
+        throw new Error(error as string)
     }
 })

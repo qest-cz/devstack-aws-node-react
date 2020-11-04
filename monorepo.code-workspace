@@ -1,0 +1,27 @@
+{
+    "folders": [
+        {
+            "name": "Monorepo Root",
+            "path": "./"
+        },
+        {
+            "name": "[BE] Showcase",
+            "path": "packages/backend/showcase"
+        },
+        {
+            "name": "[CO] Utils",
+            "path": "packages/common/utils"
+        },
+        {
+            "name": "[FE] Showcase",
+            "path": "packages/frontend/showcase"
+        }
+    ],
+    "extensions": {
+        "recommendations": [
+            "streetsidesoftware.code-spell-checker",
+            "eamodio.gitlens",
+            "esbenp.prettier-vscode"
+        ]
+    }
+}
