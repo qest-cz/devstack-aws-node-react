@@ -22,6 +22,6 @@
         "typeRoots": ["node_modules/@types"],
         "types": ["@types/node", "@types/jest"]
     },
-    "include": ["config/**/*.ts", "src/container/**/*.ts", "src/**/*.ts", "src/**/*.tsx"],
-    "exclude": ["node_modules", "dist", "src/**/*.spec.ts", "src/**/*.test.ts", "cdk.out"]
+    "include": ["src/config/**/*.ts", "src/container/**/*.ts", "src/**/*.ts", "src/**/*.tsx"],
+    "exclude": ["node_modules", "dist", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

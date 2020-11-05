@@ -5,12 +5,16 @@
             "path": "./"
         },
         {
-            "name": "[BE] Showcase",
-            "path": "packages/backend/showcase"
+            "name": "[CO] Deployment",
+            "path": "packages/common/deployment"
         },
         {
             "name": "[CO] Utils",
             "path": "packages/common/utils"
+        },
+        {
+            "name": "[BE] Showcase",
+            "path": "packages/backend/showcase"
         },
         {
             "name": "[FE] Showcase",

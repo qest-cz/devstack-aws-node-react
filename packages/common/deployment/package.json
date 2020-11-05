@@ -1,0 +1,48 @@
+{
+    "name": "co-deployment",
+    "version": "0.0.1",
+    "description": "Deployment package",
+    "license": "UNLICENSED",
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
+    "private": true,
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "build:watch": "tsc -p tsconfig.json --watch",
+        "getenv": "ts-node -T ./scripts/get-env-vars.ts ../../../env/.env",
+        "cdk:app": "cdk --app 'ts-node -T ./src/apps/deploy-lambda.ts'",
+        "cdk:app-ecs": "cdk --app 'ts-node -T ./src/apps/deploy-ecs.ts'",
+        "deploy": "yarn cdk:app deploy '*' --require-approval never && yarn getenv",
+        "deploy-ecs": "yarn cdk:app-ecs deploy '*' --require-approval never && yarn getenv",
+        "clean": "rm -rf ./dist",
+        "clean:full": "rm -rf ./node_modules"
+    },
+    "dependencies": {
+        "be-showcase": "^0.0.1",
+        "fe-showcase": "^0.0.1"
+    },
+    "devDependencies": {
+        "@aws-cdk/aws-apigateway": "1.67.0",
+        "@aws-cdk/aws-cognito": "1.67.0",
+        "@aws-cdk/aws-dynamodb": "1.67.0",
+        "@aws-cdk/aws-ecs-patterns": "1.67.0",
+        "@aws-cdk/aws-events": "1.67.0",
+        "@aws-cdk/aws-events-targets": "1.67.0",
+        "@aws-cdk/aws-iam": "1.67.0",
+        "@aws-cdk/aws-lambda": "1.67.0",
+        "@aws-cdk/aws-lambda-event-sources": "1.67.0",
+        "@aws-cdk/aws-lambda-nodejs": "1.67.0",
+        "@aws-cdk/aws-logs": "1.67.0",
+        "@aws-cdk/aws-rds": "1.67.0",
+        "@aws-cdk/aws-s3": "1.67.0",
+        "@aws-cdk/aws-s3-deployment": "1.67.0",
+        "@aws-cdk/aws-sns": "1.67.0",
+        "@aws-cdk/aws-sns-subscriptions": "1.67.0",
+        "@aws-cdk/aws-sqs": "1.67.0",
+        "@aws-cdk/aws-ssm": "1.67.0",
+        "@aws-cdk/core": "1.67.0",
+        "@aws-cdk/custom-resources": "1.67.0",
+        "aws-cdk": "1.67.0",
+        "ts-node": "^9.0.0"
+    }
+}

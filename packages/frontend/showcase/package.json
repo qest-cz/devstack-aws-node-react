@@ -10,13 +10,14 @@
         "getenv": "ts-node -T scripts/get-env-vars.ts",
         "start": "webpack-dev-server",
         "build": "yarn clean && webpack --mode production",
+        "build:watch": "yarn clean && webpack --mode production --watch",
         "clean": "concurrently 'rm -rf dist' 'rm -rf coverage'",
         "clean:full": "yarn clean && rm -rf node_modules",
         "test": "jest"
     },
     "name": "fe-showcase",
     "private": true,
-    "version": "1.0.0",
+    "version": "0.0.1",
     "main": "src/index.js",
     "license": "MIT",
     "devDependencies": {
@@ -35,7 +36,11 @@
         "typescript": "^3.9.7",
         "webpack": "^4.44.1",
         "webpack-cli": "^3.3.12",
-        "webpack-dev-server": "^3.11.0"
+        "webpack-dev-server": "^3.11.0",
+        "aws-cdk": "1.67.0",
+        "@aws-cdk/aws-s3": "1.67.0",
+        "@aws-cdk/aws-s3-deployment": "1.67.0",
+        "@aws-cdk/core": "1.67.0"
     },
     "dependencies": {
         "co-utils": "^0.0.1",

@@ -8,3 +8,13 @@ export enum AppStacks {
     EcsTodosApiStack = 'EcsTodosApiStack',
     EcsSettingsApiStack = 'EcsSettingsApiStack',
 }
+
+// TODO: This is just a proof of concept and it could be awesome if utilized correctly
+export const KnownPackages = {
+    frontendShowcase: {
+        relativePath: '../../frontend/showcase',
+    },
+    backendShowcase: {
+        relativePath: '../../backend/showcase',
+    },
+} as const

@@ -1,16 +1,12 @@
 import fs from 'fs'
+import path from 'path'
 import AWS from 'aws-sdk'
 import { constantCase } from 'change-case'
-import { AppStacks } from '../aws/constants'
-
-const ENV_FILE_PATH = 'env/.env'
+import { AppStacks } from '../src/constants'
 
 const cf = new AWS.CloudFormation({
     region: process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION || 'eu-west-1',
 })
-
-const writeEnvs = (envStr: string) => fs.writeFileSync(ENV_FILE_PATH, envStr)
-const appendEnvs = (envStr: string) => fs.appendFileSync(ENV_FILE_PATH, envStr)
 
 const getEnvironment = async (stackName: string): Promise<string> =>
     cf
@@ -33,20 +29,32 @@ const getEnvironment = async (stackName: string): Promise<string> =>
             return ''
         })
 
-const createDevEnvFile = async () => {
-    writeEnvs('AWS_NODEJS_CONNECTION_REUSE_ENABLED=1\n')
-    appendEnvs('AWS_SDK_LOAD_CONFIG=1\n')
+const writeEnvs = (envFilePath: string, envStr: string) => fs.writeFileSync(envFilePath, envStr)
+const appendEnvs = (envFilePath: string, envStr: string) => fs.appendFileSync(envFilePath, envStr)
+
+export const createDevEnvFile = async (envFilePath: string) => {
+    if (!envFilePath) {
+        throw new Error(`The env file path has to be provided to the createDevEnvFile`)
+    }
+
+    const dirPath = path.dirname(envFilePath)
+    fs.mkdirSync(dirPath, {
+        recursive: true,
+    })
+
+    writeEnvs(envFilePath, 'AWS_NODEJS_CONNECTION_REUSE_ENABLED=1\n')
+    appendEnvs(envFilePath, 'AWS_SDK_LOAD_CONFIG=1\n')
 
     try {
         for (const stackName of Object.values(AppStacks)) {
-            appendEnvs(await getEnvironment(stackName))
+            appendEnvs(envFilePath, await getEnvironment(stackName))
         }
     } catch (err) {
         console.log(err)
     }
 
-    console.log(`\nResulting env file ${ENV_FILE_PATH}:\n`)
-    return fs.readFileSync(ENV_FILE_PATH).toString()
+    console.log(`\nResulting env file ${envFilePath}:\n`)
+    return fs.readFileSync(envFilePath).toString()
 }
 
-createDevEnvFile().then(console.log).catch(console.log)
+createDevEnvFile(process.argv[2]).then(console.log).catch(console.error)

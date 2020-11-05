@@ -1,8 +1,8 @@
 import { CfnOutput, Construct, RemovalPolicy, Stack, StackProps } from '@aws-cdk/core'
 import { BucketDeployment, CacheControl, ISource } from '@aws-cdk/aws-s3-deployment'
 import { Bucket } from '@aws-cdk/aws-s3'
-import { WebsiteBucket } from '../constructs/WebsiteBucket'
-import { S3File } from '../constructs/S3File/S3File'
+import { WebsiteBucket } from 'co-utils/src/aws/constructs/WebsiteBucket'
+import { S3File } from 'co-utils/src/aws/constructs/S3File'
 
 export interface FrontEndStackProps extends StackProps {
     sourceAsset: ISource

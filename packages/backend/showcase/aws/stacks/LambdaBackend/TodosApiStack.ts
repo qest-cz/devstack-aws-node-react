@@ -2,7 +2,7 @@ import { CfnOutput, Construct, RemovalPolicy, Stack, StackProps } from '@aws-cdk
 import { LambdaRestApi } from '@aws-cdk/aws-apigateway'
 import { Function, FunctionProps } from '@aws-cdk/aws-lambda'
 import { AttributeType, BillingMode, Table } from '@aws-cdk/aws-dynamodb'
-import { WebsiteBucket } from '../../constructs/WebsiteBucket'
+import { WebsiteBucket } from 'co-utils/src/aws/constructs/WebsiteBucket'
 
 export interface TodosApiStackProps extends StackProps {
     apiHandlerProps: FunctionProps

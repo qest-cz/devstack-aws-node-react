@@ -32,4 +32,15 @@ module.exports = {
         'unused-imports/no-unused-vars-ts': 'off',
         'unused-imports/no-unused-imports-ts': 'error',
     },
+    ignorePatterns: [
+        'node_modules',
+        'dist',
+        'dist-web',
+        'dist-ecs',
+        'cdk.out',
+        '.parcel-cache',
+        'build',
+        'serviceWorker.js',
+        'serviceWorker.ts',
+    ],
 }

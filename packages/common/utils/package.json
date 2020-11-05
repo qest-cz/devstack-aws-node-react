@@ -8,6 +8,7 @@
     "private": true,
     "scripts": {
         "build": "tsc -p tsconfig.prod.json",
+        "build:watch": "tsc -p tsconfig.prod.json --watch",
         "build:check": "tsc -p tsconfig.prod.json --noEmit",
         "clean": "concurrently 'rm -rf dist' 'rm -rf coverage'",
         "clean:full": "yarn clean && rm -rf node_modules",
@@ -22,16 +23,12 @@
         "code:check": "concurrently -n 'pretty,lint,tsc:check' 'yarn prettier:check' 'yarn eslint:check' 'yarn tsc:check'",
         "code:fix": "concurrently -n 'pretty,lint' 'yarn prettier:fix' 'yarn tslint:fix'"
     },
-    "dependencies": {
-        "jest": "^24.9.0",
-        "ts-jest": "^24.2.0"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@types/jest": "^24.0.23",
         "concurrently": "^5.0.2",
-        "prettier": "^2.0.5"
-    },
-    "bundledDependencies": [
-        "co-models"
-    ]
+        "prettier": "^2.0.5",
+        "jest": "^24.9.0",
+        "ts-jest": "^24.2.0"
+    }
 }

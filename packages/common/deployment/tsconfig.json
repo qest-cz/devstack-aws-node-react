@@ -7,9 +7,10 @@
     /* Module Resolution Options */
     "baseUrl": "./src",                       /* Base directory to resolve non-absolute module names. */
     "typeRoots": ["node_modules/@types"],      /* List of folders to include type definitions from. */
-    "types": ["node"]
+    "types": ["node"],
+    "noUnusedLocals": false
   },
   "exclude": [
-    "./dist"
+    "dist",
   ]
 }

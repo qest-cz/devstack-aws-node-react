@@ -5,7 +5,7 @@ import { ICertificate } from '@aws-cdk/aws-certificatemanager'
 import { IHostedZone } from '@aws-cdk/aws-route53'
 import { AttributeType, BillingMode, Table } from '@aws-cdk/aws-dynamodb'
 import { Bucket } from '@aws-cdk/aws-s3'
-import { WebsiteBucket } from '../../constructs/WebsiteBucket'
+import { WebsiteBucket } from 'co-utils/src/aws/constructs/WebsiteBucket'
 
 export interface TodosApiStackProps extends StackProps {
     cluster: ICluster
