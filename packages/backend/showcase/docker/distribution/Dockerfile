@@ -1,0 +1,13 @@
+FROM node:12
+
+ARG ENTRY_PATH
+RUN test -n "$ENTRY_PATH"
+ENV ENTRY_PATH ${ENTRY_PATH}
+
+ADD . /app
+
+WORKDIR /app
+
+EXPOSE 8080
+
+CMD node ${ENTRY_PATH}

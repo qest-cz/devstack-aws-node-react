@@ -1,20 +1,16 @@
-*.js
-!jest.config.js
-!.eslintrc.js
-!webpack.config.js
-!.prettierrc.js
 node_modules
 
 # CDK asset staging directory
 .cdk.staging
 cdk.out
 
-# Parcel build directories
+
+
+# Build directories
 .cache
 .build
 dist
-dist-web
-dist-ecs
+dist-aws
 .idea
 .vscode
 cdk.context.json

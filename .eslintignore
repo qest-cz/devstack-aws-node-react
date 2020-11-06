@@ -1,9 +1,0 @@
-node_modules
-dist
-dist-web
-dist-ecs
-cdk.out
-.parcel-cache
-build
-serviceWorker.js
-serviceWorker.ts

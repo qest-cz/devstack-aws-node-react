@@ -1,0 +1,34 @@
+{
+    "name": "co-utils",
+    "version": "0.0.1",
+    "description": "Utilities shared by FE and BE packages",
+    "license": "UNLICENSED",
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
+    "private": true,
+    "scripts": {
+        "build": "tsc -p tsconfig.prod.json",
+        "build:watch": "tsc -p tsconfig.prod.json --watch",
+        "build:check": "tsc -p tsconfig.prod.json --noEmit",
+        "clean": "concurrently 'rm -rf dist' 'rm -rf coverage'",
+        "clean:full": "yarn clean && rm -rf node_modules",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "tsc:check": "tsc --noEmit",
+        "prettier:check": "prettier -c \"./src/**/*.{ts,tsx}\"",
+        "eslint:check": "eslint \"./src/**/*.{ts,tsx}\"",
+        "prettier:fix": "prettier --write './**/*.{ts,tsx}'",
+        "eslint:fix": "eslint --fix \"./src/**/*.{ts,tsx}\"",
+        "code:check": "concurrently -n 'pretty,lint,tsc:check' 'yarn prettier:check' 'yarn eslint:check' 'yarn tsc:check'",
+        "code:fix": "concurrently -n 'pretty,lint' 'yarn prettier:fix' 'yarn tslint:fix'"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/jest": "^24.0.23",
+        "concurrently": "^5.0.2",
+        "prettier": "^2.0.5",
+        "jest": "^24.9.0",
+        "ts-jest": "^24.2.0"
+    }
+}
