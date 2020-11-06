@@ -9,7 +9,7 @@
         "code:check": "lerna run code:check",
         "code:fix": "lerna run code:fix",
         "clean": "lerna run clean",
-        "clean:full": "lerna run clean:full && rm -rf node_modules",
+        "clean:all": "lerna run clean:all && rm -rf node_modules",
         "update-package-jsons": "ts-node --script-mode ./packages_base/update-package-jsons.ts \"$(lerna list --all --json)\"",
         "deploy": "cd packages/common/deployment && yarn deploy",
         "deploy-ecs": "lerna run build:docker && cd packages/common/deployment && yarn deploy-ecs"

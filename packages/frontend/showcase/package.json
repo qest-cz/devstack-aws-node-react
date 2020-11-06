@@ -12,7 +12,7 @@
         "build": "yarn clean && webpack --mode production",
         "build:watch": "yarn clean && webpack --mode production --watch",
         "clean": "concurrently 'rm -rf dist' 'rm -rf coverage'",
-        "clean:full": "yarn clean && rm -rf node_modules",
+        "clean:all": "yarn clean && rm -rf node_modules",
         "test": "jest"
     },
     "name": "fe-showcase",

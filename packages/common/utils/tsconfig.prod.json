@@ -3,6 +3,7 @@
     "exclude": [
         "./dist",
         "./src/**/*.test.ts",
-        "./src/**/test-hooks.ts"
+        "./src/**/test-hooks.ts",
+        "./scripts"
     ]
 }

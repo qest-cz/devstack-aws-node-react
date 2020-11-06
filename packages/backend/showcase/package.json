@@ -12,9 +12,9 @@
         "dev:server": "nodemon --watch src -e ts  --exec 'yarn dev bin/start-dev-server.ts'",
         "build": "yarn clean && webpack --mode production",
         "build:watch": "yarn clean && webpack --mode production --watch",
-        "build:docker": "echo 'TODO: Improve this by bundling private packages and installing in a off-folder' && yarn clean && tsc --outDir dist-docker && rm -rf ./node_modules && yarn install --production && cp ./docker/distribution/.dockerignore dist-docker/.dockerignore && cp ./docker/distribution/Dockerfile dist-docker/Dockerfile && rsync -aLP --exclude 'be-showcase' ../../../node_modules/* dist-docker/node_modules && cp -r node_modules dist-docker/node_modules && rm -rf ./node_modules && yarn install",
+        "build:docker": "yarn clean && tsc --outDir dist-docker && cp ./package.json ./dist-docker/package.json && bundle-dependencies ./dist-docker && cd dist-docker && yarn install --production && cp ../docker/distribution/.dockerignore ./.dockerignore && cp ../docker/distribution/Dockerfile ./Dockerfile",
         "clean": "concurrently 'rm -rf ./dist' 'rm -rf ./dist-docker' 'rm -rf ./coverage'",
-        "clean:full": "yarn clean && rm -rf node_modules",
+        "clean:all": "yarn clean && rm -rf node_modules",
         "test": "jest"
     },
     "name": "be-showcase",
@@ -90,5 +90,8 @@
         "ramda": "^0.27.1",
         "request": "2.79.0",
         "ts-loader": "^8.0.3"
-    }
+    },
+    "bundledDependencies": [
+        "co-utils"
+    ]
 }
