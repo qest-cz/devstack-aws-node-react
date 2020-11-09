@@ -1,11 +1,22 @@
 0 silly argv {
-0 silly argv   _: [ 'run' ],
+0 silly argv   _: [ 'create' ],
 0 silly argv   lernaVersion: '3.22.1',
 0 silly argv   '$0': 'node_modules/.bin/lerna',
-0 silly argv   script: 'clean:all'
+0 silly argv   name: 'some',
+0 silly argv   loc: 'packages/common'
 0 silly argv }
 1 notice cli v3.22.1
 2 verbose rootPath /home/jack/Projects/devstack-aws-node-react
-3 error JSONError: Unexpected token } in JSON at position 1279 while parsing near '...ode": "^9.0.0",    },    "devDependenc...' in packages/common/utils/package.json
-3 error     at module.exports (/home/jack/Projects/devstack-aws-node-react/node_modules/parse-json/index.js:26:19)
-3 error     at parse (/home/jack/Projects/devstack-aws-node-react/node_modules/load-json-file/index.js:15:9)
+3 error Error: canceled
+3 error     at Interface.<anonymous> (/home/jack/Projects/devstack-aws-node-react/node_modules/read/lib/read.js:66:13)
+3 error     at Interface.emit (events.js:315:20)
+3 error     at Interface._ttyWrite (readline.js:875:16)
+3 error     at ReadStream.onkeypress (readline.js:213:10)
+3 error     at ReadStream.emit (events.js:315:20)
+3 error     at emitKeys (internal/readline/utils.js:345:14)
+3 error     at emitKeys.next (<anonymous>)
+3 error     at ReadStream.onData (readline.js:1144:36)
+3 error     at ReadStream.emit (events.js:315:20)
+3 error     at addChunk (_stream_readable.js:309:12)
+3 error     at readableAddChunk (_stream_readable.js:284:9)
+3 error     at ReadStream.Readable.push (_stream_readable.js:223:10)

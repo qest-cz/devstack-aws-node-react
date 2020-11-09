@@ -3,7 +3,12 @@
     "private": true,
     "scripts": {
         "bootstrap": "yarn install && lerna bootstrap && yarn build",
-        "dev:fe": "lerna run --scope 'fe-*' dev",
+        "dev": "concurrently 'yarn dev:_fe' 'yarn dev:_be' 'yarn dev:_co'",
+        "dev:fe": "concurrently 'yarn dev:_fe' 'yarn dev:_co'",
+        "dev:be": "concurrently 'yarn dev:_be' 'yarn dev:_co'",
+        "dev:_co": "lerna run --stream --scope 'co-*' build:watch",
+        "dev:_fe": "lerna run --stream --scope 'fe-*' dev",
+        "dev:_be": "lerna run --stream --scope 'be-*' dev:server",
         "build": "lerna run build",
         "build:watch": "lerna run build:watch",
         "code:check": "lerna run code:check",
@@ -15,6 +20,7 @@
         "deploy-ecs": "lerna run build:docker && cd packages/common/deployment && yarn deploy-ecs"
     },
     "devDependencies": {
+        "deepmerge": "^4.2.2",
         "lerna": "^3.22.1",
         "ts-node": "^9.0.0"
     },

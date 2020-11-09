@@ -1,29 +1,23 @@
 import shared from './package.shared.json'
 import fs from 'fs'
+import deepMerge from 'deepmerge'
 
 type Info = { location: string }
 
-let packageJsons: Info[] = []
+let workspacePackagesInfo: Info[] = []
 try {
-    packageJsons = JSON.parse(process.argv[2]) as Info[]
+    workspacePackagesInfo = JSON.parse(process.argv[2]) as Info[]
 } catch (err) {
     throw new Error(`Error while parsing the package descriptors json...`)
 }
 
-const alteredJsons = packageJsons.map((packageJson) => {
-    const path = `${packageJson.location}/package.json`
+const alteredJsons = workspacePackagesInfo.map((packageInfo) => {
+    const path = `${packageInfo.location}/package.json`
     const fileContents = JSON.parse(fs.readFileSync(path).toString())
 
     return {
         path,
-        content: {
-            ...shared,
-            ...fileContents,
-            scripts: {
-                ...shared.scripts,
-                ...(fileContents.scripts || {}),
-            },
-        },
+        content: deepMerge(shared, fileContents),
     }
 })
 

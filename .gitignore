@@ -4,7 +4,8 @@ node_modules
 .cdk.staging
 cdk.out
 
-
+# Lerna
+lerna-debug.log
 
 # Build directories
 .cache

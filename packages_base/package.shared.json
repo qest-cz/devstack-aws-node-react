@@ -6,6 +6,6 @@
         "prettier:fix": "prettier --write './**/*.{ts,tsx}'",
         "eslint:fix": "eslint --fix \"./src/**/*.{ts,tsx}\"",
         "code:check": "concurrently -n 'pretty,lint,tsc:check' 'yarn prettier:check' 'yarn eslint:check' 'yarn tsc:check'",
-        "code:fix": "concurrently -n 'pretty,lint' 'yarn prettier:fix' 'yarn tslint:fix'"
+        "code:fix": "concurrently -n 'pretty,lint' 'yarn prettier:fix' 'yarn eslint:fix'"
     }
 }
