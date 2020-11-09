@@ -8,11 +8,11 @@
         "code:check": "concurrently -n 'pretty,lint,tsc:check' 'yarn prettier:check' 'yarn eslint:check' 'yarn tsc:check'",
         "code:fix": "eslint --fix '*/**/*.{ts,tsx}'",
         "getenv": "ts-node -T scripts/get-env-vars.ts",
-        "start": "webpack-dev-server",
+        "dev": "webpack-dev-server",
         "build": "yarn clean && webpack --mode production",
         "build:watch": "yarn clean && webpack --mode production --watch",
         "clean": "concurrently 'rm -rf dist' 'rm -rf coverage'",
-        "clean:full": "yarn clean && rm -rf node_modules",
+        "clean:all": "yarn clean && rm -rf node_modules",
         "test": "jest"
     },
     "name": "fe-showcase",
